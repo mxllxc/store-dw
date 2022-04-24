@@ -1,0 +1,91 @@
+import { Container } from "./styles";
+import { GrAdd } from 'react-icons/gr';
+
+export default function Products(props) {
+
+    const productsList = [
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/95cb4aeed4e54a198160ab4900c13b93_9366/Tenis_Grand_Court_SE_Preto_FW6690_01_standard.jpg",
+            name: "Adidas Tênis Grand Court Se Core",
+            value: 399.99
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+        {
+            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+            name: "Tênis Ultra Boost 5 DNA",
+            value: 3200
+        },
+    ]
+    
+    function Name(name) {
+        if(name.length > 11) {
+            const result = name.substring(15, 0);
+            return `${result}...`
+        }
+        return name;
+    }
+
+    return(
+        <Container>
+            {productsList.map(p => (
+                <div key={p.img} className="card">
+                    <img src={p.img} alt={p.name} />
+                    <h1>{Name(p.name)}</h1>
+                    <h2>{"R$ " + p.value}</h2>
+                    <button className="add-product" onClick={() => {props.setCart([...props.cart, p])}}>
+                    <GrAdd />
+                    </button>
+                </div>
+            ))}
+        </Container>
+    )
+}
