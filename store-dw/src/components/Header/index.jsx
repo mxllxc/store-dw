@@ -16,7 +16,8 @@ export default function Header(props) {
             <AiOutlineSearch size={20} />           
             <input type="text" placeholder='Buscar' />
             </div>
-            <div className='icon-div'>
+            {/* TODO Nao abrir modal de cadastro caso ja esteja cadastrado e logado */}
+            <div className='icon-div' onClick={props.handleOpenCadastro}>
             <AiOutlineUser size={20} />
             <h2>Conta</h2>
             </div>
@@ -25,6 +26,7 @@ export default function Header(props) {
             <h2>{props.cart.length}</h2>
             <h2>Carrinho</h2>
             </div>
+            <h2>Ola, {props.name}</h2>
             </div>
         </Container>
     )

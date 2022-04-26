@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { Container } from "./styles";
 import { GrAdd } from 'react-icons/gr';
 
@@ -81,6 +82,7 @@ export default function Products(props) {
                     <img src={p.img} alt={p.name} />
                     <h1>{Name(p.name)}</h1>
                     <h2>{"R$ " + p.value}</h2>
+                    {/* TODO Nao deixar cadastrar caso nao esteja logado */}
                     <button className="add-product" onClick={() => {props.setCart([...props.cart, p])}}>
                     <GrAdd />
                     </button>
