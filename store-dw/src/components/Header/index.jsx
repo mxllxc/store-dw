@@ -26,7 +26,7 @@ export default function Header(props) {
                 <h2>{props.cart.length}</h2>
                 <h2>Carrinho</h2>
                 </div>
-                <h2>Ola, {props.name}</h2>
+                <h2>Ola, {props.login && props.name !== '' ? props.name : 'Anônimo'}</h2>
             </div>
         </Container>
     )

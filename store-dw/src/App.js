@@ -59,7 +59,7 @@ function Login() {
         setCadastro={setCadastro}
         cadastro={cadastro}
         />
-        <Header cart={cart} handleOpenCadastro={handleOpenCadastro} name={nome} />
+        <Header login={login} cart={cart} handleOpenCadastro={handleOpenCadastro} name={nome} />
         <Products setCart={setCart} cart={cart} handleOpenCadastro={handleOpenCadastro} login={login}/>
     </div>
   );
