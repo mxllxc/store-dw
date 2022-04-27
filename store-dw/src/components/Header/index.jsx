@@ -16,7 +16,6 @@ export default function Header(props) {
                 <AiOutlineSearch size={20} />           
                 <input type="text" placeholder='Buscar' />
                 </div>
-                {/* TODO Nao abrir modal de cadastro caso ja esteja cadastrado e logado */}
                 <div className='icon-div' onClick={props.handleOpenCadastro}>
                 <AiOutlineUser size={20} />
                 <h2>Conta</h2>
