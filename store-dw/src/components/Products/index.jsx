@@ -14,57 +14,7 @@ export default function Products(props) {
             img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
             name: "Tênis Ultra Boost 5 DNA",
             value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
-        {
-            img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
-            name: "Tênis Ultra Boost 5 DNA",
-            value: 3200
-        },
+        }
     ]
     
     function Name(name) {
@@ -75,6 +25,14 @@ export default function Products(props) {
         return name;
     }
 
+    function ValidarLogin(p) {
+        if(props.login === false) {
+            props.handleOpenCadastro();
+        } else {
+            props.setCart([...props.cart, p])
+        }
+    }
+
     return(
         <Container>
             {productsList.map(p => (
@@ -83,7 +41,7 @@ export default function Products(props) {
                     <h1>{Name(p.name)}</h1>
                     <h2>{"R$ " + p.value}</h2>
                     {/* TODO Nao deixar cadastrar caso nao esteja logado */}
-                    <button className="add-product" onClick={() => {props.setCart([...props.cart, p])}}>
+                    <button className="add-product" onClick={() => {ValidarLogin(p)}}>
                     <GrAdd />
                     </button>
                 </div>

@@ -1,6 +1,53 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div` 
+
+    .login-done {
+        display: none;
+    }
+    .login-rejected {
+        display: flex;
+        justify-content: center;
+    }
+
+    .h1-cadastro-true {
+        border-bottom: 1px solid var(--black);
+        transition: 0.3s;
+
+        &:hover {
+            border-bottom: 1px solid var(--gray700);
+        }
+    }
+    .h1-login-true {
+        border-bottom: 1px solid var(--black);
+        transition: 0.3s;
+
+        &:hover {
+            border-bottom: 1px solid var(--gray700);
+        }
+    }
+
+    .login-false {
+        display: none;
+    }
+
+    .login-true {
+        display: block;
+        margin: 20px auto;
+    }
+
+    .titles {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .cadastro-true {
+        display: block;
+    }
+
+    .cadastro-false {
+        display: none;
+    }
 
     .field-cadastro {
         display: flex;
@@ -21,7 +68,7 @@ export const Container = styled.div`
         border: none;
         width: 25%;
         margin: 20px auto 0;
-        padding: 8px 50px 8px 50px;
+        padding: 6px 50px 6px 50px;
         display: flex;
         justify-content: center;
         background-color: var(--gray700);
@@ -48,6 +95,7 @@ export const Container = styled.div`
     }
 
     label {
+        margin-top: 10px;
         font-family: 'Poppins', sans-serif;
         font-weight: 300;
         font-size: large;

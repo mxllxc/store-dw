@@ -7,6 +7,7 @@ export const Container = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
+    margin: auto;
 
     button {
         border: none;
