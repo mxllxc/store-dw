@@ -9,6 +9,14 @@ export default function Cart(props) {
         props.setCart(filteredCart);
     }
 
+    function Name(name) {
+        if(name.length > 11) {
+            const result = name.substring(25, 0);
+            return `${result}...`
+        }
+        return name;
+    }
+
 
 
     return(
@@ -19,7 +27,7 @@ export default function Cart(props) {
                         <img src={p.img} alt={p.name} />
 
                     <div className="cart-product">
-                        <h1>{p.name}</h1> <br />
+                        <h1>{Name(p.name)}</h1> <br />
                         <h1>R$ {p.value}</h1>
                        
                         { /*TODO <h1>Quantidade</h1> */}
