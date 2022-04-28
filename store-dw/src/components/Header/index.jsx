@@ -20,7 +20,7 @@ export default function Header(props) {
                 <AiOutlineUser size={20} />
                 <h2>Conta</h2>
                 </div>
-                <div className='icon-div'>
+                <div className='icon-div' onMouseEnter={() => {props.setCartOpen(true)}}>
                 <AiOutlineShoppingCart size={20} />
                 <h2>{props.cart.length}</h2>
                 <h2>Carrinho</h2>

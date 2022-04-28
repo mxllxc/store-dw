@@ -2,8 +2,9 @@
 import Products from "./components/Products";
 import '../src/assets/globalStyles.css';
 import Header from "./components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalCadastro from "./components/ModalCadastro";
+import Cart from "./components/Cart";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -16,6 +17,19 @@ function App() {
   const [senha, setSenha] = useState('');
   const [alert, setAlert] = useState(false);
   const [cadastro, setCadastro] = useState(true);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [finalValue, setFinalValue] = useState(0);
+
+  let result = 0;
+
+
+  useEffect(() => {
+    cart.forEach(c => {
+            result = c.value + result;
+            return result;
+        });
+        setFinalValue(result);
+  }, [cart])
 
   
   const [user, setUser] = useState([]);
@@ -31,7 +45,6 @@ function App() {
 
 function Login() {
   const result = user.find(usuario => usuario.nome === nome && usuario.senha === senha);
-  console.log(result);
   if(result === undefined) {
     setAlert(true);
 
@@ -59,8 +72,9 @@ function Login() {
         setCadastro={setCadastro}
         cadastro={cadastro}
         />
-        <Header login={login} cart={cart} handleOpenCadastro={handleOpenCadastro} name={nome} />
-        <Products setCart={setCart} cart={cart} handleOpenCadastro={handleOpenCadastro} login={login}/>
+        <Cart setCart={setCart} setFinalValue={setFinalValue} finalValue={finalValue} cartOpen={cartOpen} cart={cart} setCartOpen={setCartOpen}/>
+        <Header setCartOpen={setCartOpen} cartOpen={cartOpen} login={login} cart={cart} handleOpenCadastro={handleOpenCadastro} name={nome} />
+        <Products cart={cart} setCart={setCart} handleOpenCadastro={handleOpenCadastro} login={login}/>
     </div>
   );
 }
