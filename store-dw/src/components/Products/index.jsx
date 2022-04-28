@@ -11,7 +11,7 @@ export default function Products(props) {
             id: 1,
             img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/95cb4aeed4e54a198160ab4900c13b93_9366/Tenis_Grand_Court_SE_Preto_FW6690_01_standard.jpg",
             name: "Adidas Tênis Grand Court Se Core",
-            value: 399.99
+            value: 399
         },
         {
             id: 2,
