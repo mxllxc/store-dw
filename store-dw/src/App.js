@@ -32,6 +32,25 @@ function App() {
     desc: "sss",
 });
 
+const productsList = [
+  {
+      id: 0,
+      img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/95cb4aeed4e54a198160ab4900c13b93_9366/Tenis_Grand_Court_SE_Preto_FW6690_01_standard.jpg",
+      name: "Adidas Tênis Grand Court Se Core",
+      value: 399,
+      coment: [],
+      desc: "Vá para as ruas e encontre seu ritmo. A partir do momento em que você amarra os cadarços, a trama na parte de cima e o sistema de cadarços envolve o seu pé para uma sensação de segurança do início ao fim. A flexibilidade adicional é altamente ágil e segura em cada passo. A parte de cima macia e ventilada se combina a uma boca elástica para um ajuste tipo meia e uma sensação segura e estável. Amarre os cadarços, alcance novas alturas e atinja suas metas.",
+  },
+  {
+      id: 1,
+      img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb0b2d2e6e24addb4b9ae0200329278_9366/Tenis_Ultraboost_5_DNA_Azul_GY0325_01_standard.jpg",
+      name: "Tênis Ultra Boost 5 DNA",
+      value: 3200,
+      coment: [],
+      desc: "aaa",
+  }
+]
+
   let result = 0;
 
 
@@ -96,11 +115,11 @@ function ValidarLogin(p) {
         setCadastro={setCadastro}
         cadastro={cadastro}
         />
-        <ModalDetails ValidarLogin={ValidarLogin} selectDetails={selectDetails} openDetails={openDetails} handleCloseDetails={handleCloseDetails}/>
+        <ModalDetails productsList={productsList} nome={nome} ValidarLogin={ValidarLogin} selectDetails={selectDetails} openDetails={openDetails} handleCloseDetails={handleCloseDetails}/>
 
         <Cart setCart={setCart} setFinalValue={setFinalValue} finalValue={finalValue} cartOpen={cartOpen} cart={cart} setCartOpen={setCartOpen}/>
         <Header setCartOpen={setCartOpen} cartOpen={cartOpen} login={login} cart={cart} handleOpenCadastro={handleOpenCadastro} name={nome} />
-        <Products ValidarLogin={ValidarLogin} handleCloseDetails={handleCloseDetails} openDetails={openDetails} selectDetails={selectDetails} setSelectDetails={setSelectDetails} handleOpenDetails={handleOpenDetails} cart={cart} setCart={setCart} handleOpenCadastro={handleOpenCadastro} login={login}/>
+        <Products productsList={productsList} ValidarLogin={ValidarLogin} handleCloseDetails={handleCloseDetails} openDetails={openDetails} selectDetails={selectDetails} setSelectDetails={setSelectDetails} handleOpenDetails={handleOpenDetails} cart={cart} setCart={setCart} handleOpenCadastro={handleOpenCadastro} login={login}/>
     </div>
   );
 }

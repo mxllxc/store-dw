@@ -18,12 +18,13 @@ const style = {
 export default function ModalDetails(props) {
 
     const [coment, setComent] = React.useState('');
-    const [doneComent, setDoneComent] = React.useState([]);
 
     function Comprar() {
         props.ValidarLogin(props.selectDetails)
         props.handleCloseDetails();
     }
+    let id = props.selectDetails.id;
+
     
    
     return(
@@ -37,7 +38,7 @@ export default function ModalDetails(props) {
                 <Container>
                     <div className="img-product">
                         <img src={props.selectDetails.img} />
-                        <h1>{props.selectDetails.value}</h1>
+                        <h1>{'R$ ' + props.selectDetails.value}</h1>
                         <button onClick={() => {Comprar()}}>COMPRAR</button>
                     </div>
                     <div className="info-product">
@@ -49,14 +50,26 @@ export default function ModalDetails(props) {
 
                     <div className="coment">
                         <form onSubmit={ (e) => {
-                            e.preventDefault();
-                            setDoneComent([...doneComent, coment]);
+                            if(coment === '') {
+                                e.preventDefault();
+                                console.log('digita algo');
+                            } else {
+                                e.preventDefault();
+                                
+                                props.productsList[id].coment.push(coment);
+                                console.log(props.productsList)
+                                setComent('');
+                            }
                         }}>
-                            <input onChange={(e) => {setComent(e.target.value)}} type="text" maxLength={100} />
+                            <input onChange={(e) => {setComent(e.target.value)}} value={coment} type="text" maxLength={150} />
                             <button  type="submit">Publicar</button>
                         </form>
-                        {doneComent.map(coment => (
-                            <h1>{coment}</h1>
+                        {props.productsList[id].coment.map(coment => (
+                            <div className="coment-solo">
+                                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="user" />
+                                <h2>{props.nome ? props.nome : 'Anônimo'}</h2>
+                                <h1>{coment}</h1>
+                            </div>
                         ))}
 
                     </div>
