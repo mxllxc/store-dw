@@ -5,12 +5,17 @@ import Header from "./components/Header";
 import { useEffect, useState } from "react";
 import ModalCadastro from "./components/ModalCadastro";
 import Cart from "./components/Cart";
+import ModalDetails from "./components/ModalDetails";
+
 
 function App() {
   const [cart, setCart] = useState([]);
   const [openCadastro, setOpenCadastro] = useState(false);
   const handleOpenCadastro = () => setOpenCadastro(true);
   const handleCloseCadastro = () => setOpenCadastro(false);
+  const [openDetails, setOpenDetails] = useState(false);
+  const handleOpenDetails = () => setOpenDetails(true);
+  const handleCloseDetails = () => setOpenDetails(false);
   const [login, setLogin] = useState(false);
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
@@ -19,6 +24,13 @@ function App() {
   const [cadastro, setCadastro] = useState(true);
   const [cartOpen, setCartOpen] = useState(false);
   const [finalValue, setFinalValue] = useState(0);
+  const [selectDetails, setSelectDetails] = useState({
+    id: 1,
+    img: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/95cb4aeed4e54a198160ab4900c13b93_9366/Tenis_Grand_Court_SE_Preto_FW6690_01_standard.jpg",
+    name: "Adidas Tênis Grand Court Se Core",
+    value: 399,
+    desc: "sss",
+});
 
   let result = 0;
 
@@ -55,6 +67,18 @@ function Login() {
   }
 }
 
+function ValidarLogin(p) {
+  if(login === false) {
+      handleOpenCadastro();
+  } else {
+      cart.forEach(c => {
+            result = c.value + result;
+            return result;
+        });
+      setCart([...cart, p])
+  }
+}
+
   return (
     <div className="App">
         <ModalCadastro
@@ -72,9 +96,11 @@ function Login() {
         setCadastro={setCadastro}
         cadastro={cadastro}
         />
+        <ModalDetails ValidarLogin={ValidarLogin} selectDetails={selectDetails} openDetails={openDetails} handleCloseDetails={handleCloseDetails}/>
+
         <Cart setCart={setCart} setFinalValue={setFinalValue} finalValue={finalValue} cartOpen={cartOpen} cart={cart} setCartOpen={setCartOpen}/>
         <Header setCartOpen={setCartOpen} cartOpen={cartOpen} login={login} cart={cart} handleOpenCadastro={handleOpenCadastro} name={nome} />
-        <Products cart={cart} setCart={setCart} handleOpenCadastro={handleOpenCadastro} login={login}/>
+        <Products ValidarLogin={ValidarLogin} handleCloseDetails={handleCloseDetails} openDetails={openDetails} selectDetails={selectDetails} setSelectDetails={setSelectDetails} handleOpenDetails={handleOpenDetails} cart={cart} setCart={setCart} handleOpenCadastro={handleOpenCadastro} login={login}/>
     </div>
   );
 }
