@@ -8,7 +8,7 @@ export default function Header(props) {
                 <h1>LOGO</h1>
                 <h2>Comprar</h2>
                 <h2>Ajuda</h2>
-                <h2>Blog</h2>
+                <h2 onClick={props.handleOpenAdm}>Cadastro</h2>
                 </div>
 
                 <div className='block'>

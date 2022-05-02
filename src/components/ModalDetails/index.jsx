@@ -18,6 +18,7 @@ const style = {
 export default function ModalDetails(props) {
 
     const [coment, setComent] = React.useState('');
+    const [comentList, setComentList] = React.useState([]);
 
     function Comprar() {
         props.ValidarLogin(props.selectDetails)
@@ -30,7 +31,7 @@ export default function ModalDetails(props) {
     return(
         <Modal
         open={props.openDetails}
-        onClose={() => {props.handleCloseDetails()}}
+        onClose={() => {setComentList([]); props.handleCloseDetails()}}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         >
@@ -56,19 +57,20 @@ export default function ModalDetails(props) {
                             } else {
                                 e.preventDefault();
                                 
-                                props.productsList[id].coment.push(coment);
-                                console.log(props.productsList)
+                                // props.setProducts[id]([...props.productsList[id], coment]);
+                                // props.productsList[id].coment.push(coment);
+                                setComentList([...comentList, coment]);
                                 setComent('');
                             }
                         }}>
                             <input onChange={(e) => {setComent(e.target.value)}} value={coment} type="text" maxLength={150} />
-                            <button  type="submit">Publicar</button>
+                            <button type="submit">Publicar</button>
                         </form>
-                        {props.productsList[id].coment.map(coment => (
+                        {comentList.map(comenta => (
                             <div className="coment-solo">
                                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="user" />
                                 <h2>{props.nome ? props.nome : 'Anônimo'}</h2>
-                                <h1>{coment}</h1>
+                                <h1>{comenta}</h1>
                             </div>
                         ))}
 
